@@ -1,5 +1,5 @@
-name: prboom-plus
-version: 1.0
+name: prboom-plus-beidl
+version: 2.5.1.5
 grade: stable
 summary: A version of the classic 3D shoot'em'up game Doom
 description: |
@@ -14,7 +14,7 @@ confinement: strict
 apps:
   prboom-plus:
     command: prboom-plus
-    plugs: [ x11, desktop, home, alsa, removable-media ]
+    plugs: [ x11, desktop, home, opengl, alsa, removable-media ]
 
 slots:
   doom-engine:
@@ -31,10 +31,12 @@ parts:
     build-packages:
       - make
       - build-essential
-      - libsdl1.2-dev
-      - libsdl-net1.2-dev
-      - libsdl-mixer1.2-dev
+      - libsdl2-dev
+      - libsdl2-image-dev
+      - libsdl2-mixer-dev
+      - libsdl2-net-dev
     stage-packages:
-      - libsdl1.2debian
-      - libsdl-net1.2
-      - libsdl-mixer1.2
+      - libsdl2-2.0-0
+      - libsdl2-image-2.0-0
+      - libsdl2-mixer-2.0-0
+      - libsdl2-net-2.0-0
