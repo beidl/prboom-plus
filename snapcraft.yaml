@@ -1,0 +1,40 @@
+name: prboom-plus
+version: 1.0
+grade: stable
+summary: A version of the classic 3D shoot'em'up game Doom
+description: |
+  PrBoom is a version of the classic 3D shoot'em'up game Doom, originally written by id Software.
+  
+  PrBoom is a game engine - it provides a program to play Doom levels, but it doesn't include any levels itself. More importantly, you need all the sounds, sprites, and other graphics that make up the Doom environment. So to play PrBoom, you need one of the main Doom data files from id Software - either doom.wad, doom2.wad, tnt.wad or plutonia.wad from one of the commercial Doom games, or the shareware doom1.wad. This file is called the IWAD.
+
+  PrBoom also supports playing Doom add-on levels, called "PWADs", which are small extra .wad files which just contain extra levels or other resources. PWADs are ONLY ADD-ONS, you still need the original IWAD that they are designed to work with. In practice, most PWADs on the Internet require doom2.wad (although some work with doom.wad).
+  
+confinement: strict
+
+apps:
+  prboom-plus:
+    command: prboom-plus
+    plugs: [ x11, desktop, home, alsa, removable-media ]
+
+slots:
+  doom-engine:
+    content: doom-engine
+    interface: content
+    read:
+      - $SNAP
+
+parts:
+  prboom-plus:
+    source: prboom2/
+    source-type: local
+    plugin: autotools
+    build-packages:
+      - make
+      - build-essential
+      - libsdl1.2-dev
+      - libsdl-net1.2-dev
+      - libsdl-mixer1.2-dev
+    stage-packages:
+      - libsdl1.2debian
+      - libsdl-net1.2
+      - libsdl-mixer1.2
