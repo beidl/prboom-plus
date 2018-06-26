@@ -14,7 +14,7 @@ confinement: strict
 apps:
   prboom-plus:
     command: prboom-plus
-    plugs: [ x11, desktop, home, opengl, alsa, removable-media, network ]
+    plugs: [ x11, desktop, home, opengl, pulseaudio, removable-media, network ]
   prboom-plus-game-server:
     command: prboom-plus-game-server
     plugs: [ home, removable-media, network-bind ]
@@ -42,8 +42,10 @@ parts:
       - libsdl2-image-dev
       - libsdl2-mixer-dev
       - libsdl2-net-dev
+      - libpulse-dev
     stage-packages:
       - libsdl2-2.0-0
       - libsdl2-image-2.0-0
       - libsdl2-mixer-2.0-0
       - libsdl2-net-2.0-0
+      - libpulse0
