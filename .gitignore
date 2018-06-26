@@ -32,3 +32,4 @@ prboom2/release
 parts/
 stage/
 prime/
+snap/.snapcraft
