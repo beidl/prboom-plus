@@ -14,7 +14,10 @@ confinement: strict
 apps:
   prboom-plus:
     command: prboom-plus
-    plugs: [ x11, desktop, home, opengl, alsa, removable-media ]
+    plugs: [ x11, desktop, home, opengl, alsa, removable-media, network ]
+  prboom-plus-game-server:
+    command: prboom-plus-game-server
+    plugs: [ home, removable-media, network-bind ]
 
 slots:
   doom-engine:
@@ -28,6 +31,7 @@ parts:
     source: prboom2/
     source-type: local
     plugin: autotools
+    install-via: prefix
     build-packages:
       - make
       - build-essential
