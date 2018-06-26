@@ -32,6 +32,9 @@ parts:
     source-type: local
     plugin: autotools
     install-via: prefix
+    build-override: |
+      sed -i "s/\$(prefix)\/games/\$(prefix)\/bin" ./src/Makefile.am
+      snapcraftctl build
     build-packages:
       - make
       - build-essential
