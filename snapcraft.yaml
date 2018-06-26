@@ -33,7 +33,7 @@ parts:
     plugin: autotools
     install-via: prefix
     override-build: |
-      sed -i "s/\$(prefix)\/games/\$(prefix)\/bin" ./src/Makefile.am
+      sed -i "s/\$(prefix)\/games/\$(prefix)\/bin/g" ./src/Makefile.am
       snapcraftctl build
     build-packages:
       - make
