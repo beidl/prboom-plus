@@ -56,4 +56,4 @@ parts:
     organize:
       prboom-plus-launch: bin/prboom-plus-launch
       prboom-plus-game-server-launch: bin/prboom-plus-game-server-launch
-    after: [ env ]
+    after: [ prboom-plus ]
