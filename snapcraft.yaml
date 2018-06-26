@@ -13,10 +13,10 @@ confinement: strict
 
 apps:
   prboom-plus:
-    command: desktop-launch prboom-plus
+    command: desktop-launch prboom-plus-launch
     plugs: [ x11, desktop, home, opengl, pulseaudio, removable-media, network ]
   prboom-plus-game-server:
-    command: desktop-launch prboom-plus-game-server
+    command: desktop-launch prboom-plus-game-server-launch
     plugs: [ home, removable-media, network-bind ]
 
 slots:
@@ -50,3 +50,10 @@ parts:
       - libsdl2-net-2.0-0
       - libpulse0
     after: [ desktop-glib-only ]
+  wrappers:
+    source: .
+    plugin: dump
+    organize:
+      prboom-plus-launch: bin/prboom-plus-launch
+      prboom-plus-game-server-launch: bin/prboom-plus-game-server-launch
+    after: [ env ]
