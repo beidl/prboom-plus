@@ -2,7 +2,7 @@
 Type=Application
 Name=PrBoom+
 Comment=enhanced clone of the classic first-person shooter Doom
-Icon=${SNAP}/gui/prboom-plus.svg
+Icon=${SNAP}/snap/gui/prboom-plus.svg
 TryExec=prboom-plus
 Exec=prboom-plus %F
 Categories=Game;ActionGame;
