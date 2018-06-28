@@ -23,9 +23,4 @@ if [ "$IWAD_FILENAME" == "" ]; then
       --file-filter='WAD file | *.wad *.WAD *.iwad *.IWAD *.pwad *.PWAD'`
 fi
 
-IWAD_DIR=$(dirname "${IWAD_FILENAME}")
-if [ -d "${IWAD_DIR}" ]; then
-    cd "${IWAD_DIR}"
-fi
-
 exec "desktop-launch" "prboom-plus" "-iwad" "${IWAD_FILENAME}"
