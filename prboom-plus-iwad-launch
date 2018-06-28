@@ -15,7 +15,6 @@ export LD_LIBRARY_PATH=$SNAP_LIBRARY_PATH:$LD_LIBRARY_PATH
 export DOOMWADDIR="${SNAP}/share/games/doom/"
 
 IWAD_FILENAME="$@"
-ADDITIONAL_ARGS=""
 
 if [ "$IWAD_FILENAME" == "" ]; then
     IWAD_FILENAME=`zenity \
@@ -29,5 +28,4 @@ if [ -d "${IWAD_DIR}" ]; then
     cd "${IWAD_DIR}"
 fi
 
-echo "Working directory $PWD"
-exec "desktop-launch" "prboom-plus" "${ADDITIONAL_ARGS}" "-iwad" "${IWAD_FILENAME}"
+exec "desktop-launch" "prboom-plus" "-iwad" "${IWAD_FILENAME}"
