@@ -1,5 +1,4 @@
 #!/bin/sh
 
 export DOOMWADDIR="${SNAP}/share/games/doom/"
-
-exec "desktop-launch" "prboom-plus" "$@"
+exec "prboom-plus" "$@"
