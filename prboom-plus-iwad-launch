@@ -20,7 +20,7 @@ if [ "$IWAD_FILENAME" == "" ]; then
       --file-selection \
       --title='Select the *.wad to play' \
       --file-filter='WAD file | *.wad *.WAD *.iwad *.IWAD *.pwad *.PWAD'`
-    exec "prboom-plus" ="-iwad" "$IWAD_FILENAME"
+    exec "prboom-plus" "-iwad" "$IWAD_FILENAME"
 else
     exec "prboom-plus" "$@"
 fi
