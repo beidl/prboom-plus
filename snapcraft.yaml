@@ -84,4 +84,6 @@ parts:
       prboom-plus-launch: bin/prboom-plus-launch
       prboom-plus-game-server-launch: bin/prboom-plus-game-server-launch
       prboom-plus-iwad-launch: bin/prboom-plus-iwad-launch
+    prime:
+      - bin/
     after: [ prboom-plus ]
