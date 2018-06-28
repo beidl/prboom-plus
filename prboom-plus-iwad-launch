@@ -10,7 +10,7 @@ fi
 
 export DOOMWADDIR="${SNAP}/share/games/doom/"
 
-if [ "$@" == "" ]; then
+if [[ "$@" == "" ]]; then
     IWAD_FILENAME=`zenity \
       --file-selection \
       --title='Select the *.wad to play' \
