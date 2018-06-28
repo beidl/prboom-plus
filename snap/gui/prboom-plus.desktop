@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=PrBoom+
+Name=PrBoom+ (fork)
 Comment=enhanced clone of the classic first-person shooter Doom
 Icon=${SNAP}/snap/gui/prboom-plus.svg
 Exec=prboom-plus-beidl.prboom-plus-iwad %F
