@@ -5,10 +5,26 @@ summary: A version of the classic 3D shoot'em'up game Doom
 description: |
   PrBoom is a version of the classic 3D shoot'em'up game Doom, originally written by id Software.
   
-  PrBoom is a game engine - it provides a program to play Doom levels, but it doesn't include any levels itself. More importantly, you need all the sounds, sprites, and other graphics that make up the Doom environment. So to play PrBoom, you need one of the main Doom data files from id Software - either doom.wad, doom2.wad, tnt.wad or plutonia.wad from one of the commercial Doom games, or the shareware doom1.wad. This file is called the IWAD.
-
-  PrBoom also supports playing Doom add-on levels, called "PWADs", which are small extra .wad files which just contain extra levels or other resources. PWADs are ONLY ADD-ONS, you still need the original IWAD that they are designed to work with. In practice, most PWADs on the Internet require doom2.wad (although some work with doom.wad).
+  - As this snap only provides a minimal DOOM game engine starting this application requires you to select the desired IWAD or PWAD file to start. You can also manually launch WAD files from your file manager.
   
+  - PrBoom is a game engine - it provides a program to play Doom levels, but it doesn't include any levels itself. More importantly, you need all the sounds, sprites, and other graphics that make up the Doom environment. So to play PrBoom, you need one of the main Doom data files from id Software - either doom.wad, doom2.wad, tnt.wad or plutonia.wad from one of the commercial Doom games, or the shareware doom1.wad. This file is called the IWAD.
+  
+  - PrBoom also supports playing Doom add-on levels, called "PWADs", which are small extra .wad files which just contain extra levels or other resources. PWADs are ONLY ADD-ONS, you still need the original IWAD that they are designed to work with. In practice, most PWADs on the Internet require doom2.wad (although some work with doom.wad).
+  
+  - Note to snap packagers/consumers
+   Additionally, other snaps can consume its content via a content interface plug and use 'prboom-plus-iwad-launch' to start the engine. Consuming snaps could use following snapcraft.yaml snippet to add the interface.
+   
+   plugs:
+     doom-engine:
+     content: doom-engine
+     interface: content
+     target: $SNAP/doom-engine
+     default-provider: prboom-plus-beidl:doom-engine
+   
+   Within the consuming snap the content would be exposed at "$SNAP/doom-engine", ie:
+     /snap/the-consuming-snap/current/doom-engine
+     /var/lib/snapd/snap/the-consuming-snap/current/doom-engine
+ 
 confinement: strict
 
 apps:
@@ -53,6 +69,11 @@ parts:
       - libsdl2-net-2.0-0
       - libpulse0
       - zenity
+    prime:
+      - bin/
+      - lib/
+      - usr/
+      - share/
     after: [ desktop-glib-only ]
   wrappers:
     source: .
