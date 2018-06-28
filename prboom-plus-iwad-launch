@@ -2,6 +2,8 @@
 
 export DOOMWADDIR="${SNAP}/share/games/doom/"
 
-IWAD_FILENAME=`zenity --file-selector`
+IWAD_FILENAME=`zenity \
+    --file-selector \
+    --title="Select the *.iwad to play"`
 
 exec "desktop-launch" "prboom-plus" "--file ${IWAD_FILENAME}"
