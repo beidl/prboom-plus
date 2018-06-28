@@ -15,7 +15,7 @@ if [[ "$@" == "" ]]; then
       --file-selection \
       --title='Select the *.wad to play' \
       --file-filter='WAD file | *.wad *.WAD *.iwad *.IWAD *.pwad *.PWAD'`
-    exec "desktop-launch" "$SNAP/bin/prboom-plus" "-iwad" "$IWAD_FILENAME"
+    exec "$SNAP/command-prboom-plus.wrapper" "-iwad" "$IWAD_FILENAME"
 else
-    exec "desktop-launch" "$SNAP/bin/prboom-plus" "$@"
+    exec "$SNAP/command-prboom-plus.wrapper" "$@"
 fi
