@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# if "$SNAP/doom-engine" exists we can expect this to run
+# as a content snap within, say, a DOOM map editor.
+# On the confinement side the script runs within the parents sandbox.
+
+if [ -d "$SNAP/doom-engine" ]; then
+    export SNAP="${SNAP}/doom-engine"
+fi
+
+export PATH="$SNAP/usr/sbin:$SNAP/usr/bin:$SNAP/sbin:$SNAP/bin:$PATH"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SNAP/lib:$SNAP/usr/lib:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu/mesa-egl"
+export LD_LIBRARY_PATH="$SNAP/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH=$SNAP_LIBRARY_PATH:$LD_LIBRARY_PATH
 export DOOMWADDIR="${SNAP}/share/games/doom/"
 
 IWAD_FILENAME="$@"
