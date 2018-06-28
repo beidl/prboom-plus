@@ -71,6 +71,7 @@ parts:
       - libsdl2-net-2.0-0
       - libpulse0
       - zenity
+      - file
     prime:
       - bin/
       - lib/
