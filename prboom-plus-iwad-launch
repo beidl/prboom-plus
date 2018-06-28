@@ -8,19 +8,14 @@ if [ -d "$SNAP/doom-engine" ]; then
     export SNAP="${SNAP}/doom-engine"
 fi
 
-export PATH="$SNAP/usr/sbin:$SNAP/usr/bin:$SNAP/sbin:$SNAP/bin:$PATH"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SNAP/lib:$SNAP/usr/lib:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu/mesa-egl"
-export LD_LIBRARY_PATH="$SNAP/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
-export LD_LIBRARY_PATH=$SNAP_LIBRARY_PATH:$LD_LIBRARY_PATH
 export DOOMWADDIR="${SNAP}/share/games/doom/"
 
-IWAD_FILENAME="$@"
-if [ "$IWAD_FILENAME" == "" ]; then
+if [ "$@" == "" ]; then
     IWAD_FILENAME=`zenity \
       --file-selection \
       --title='Select the *.wad to play' \
       --file-filter='WAD file | *.wad *.WAD *.iwad *.IWAD *.pwad *.PWAD'`
-    exec "prboom-plus" "-iwad" "$IWAD_FILENAME"
+    exec "desktop-launch" "prboom-plus" "-iwad" "$IWAD_FILENAME"
 else
-    exec "prboom-plus" "$@"
+    exec "desktop-launch" "prboom-plus" "$@"
 fi
