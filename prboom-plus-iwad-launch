@@ -1,0 +1,7 @@
+#!/bin/sh
+
+export DOOMWADDIR="${SNAP}/share/games/doom/"
+
+IWAD_FILENAME=`zenity --file-selector`
+
+exec "desktop-launch" "prboom-plus" "--file ${IWAD_FILENAME}"

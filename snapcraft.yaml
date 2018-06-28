@@ -18,6 +18,9 @@ apps:
   prboom-plus-game-server:
     command: desktop-launch prboom-plus-game-server-launch
     plugs: [ home, removable-media, network-bind ]
+  prboom-plus-iwad:
+    command: desktop-launch prboom-plus-iwad-launch
+    plugs: [ x11, home, opengl, pulseaudio, removable-media, network ]
 
 slots:
   doom-engine:
@@ -49,6 +52,7 @@ parts:
       - libsdl2-mixer-2.0-0
       - libsdl2-net-2.0-0
       - libpulse0
+      - zenity
     after: [ desktop-glib-only ]
   wrappers:
     source: .
@@ -56,4 +60,5 @@ parts:
     organize:
       prboom-plus-launch: bin/prboom-plus-launch
       prboom-plus-game-server-launch: bin/prboom-plus-game-server-launch
+      prboom-plus-iwad-launch: bin/prboom-plus-iwad-launch
     after: [ prboom-plus ]
