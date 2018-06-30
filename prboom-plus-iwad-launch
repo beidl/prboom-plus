@@ -19,7 +19,7 @@ if [[ "$@" == "" ]]; then
     if [ "$IWAD_FILENAME" == "" ]; then
         exit 1
     fi
-    filetype=`LANG=C file -m $SNAP/usr/lib/file/magic.mgc $IWAD_FILENAME`
+    filetype=`LANG=C file -m $SNAP/usr/share/file/magic.mgc $IWAD_FILENAME`
 
     # select additional IWAD file via zenity
     if [[ $filetype = *"PWAD data"* ]]; then

@@ -72,7 +72,7 @@ parts:
       - libpulse0
       - zenity
       - file
-      - libmagic-mgc
+      - libmagic1
     prime:
       - bin/
       - lib/
