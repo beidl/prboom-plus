@@ -32,13 +32,13 @@ confinement: strict
 apps:
   prboom-plus:
     command: desktop-launch prboom-plus-launch
-    plugs: [ x11, desktop, home, opengl, pulseaudio, removable-media, network ]
+    plugs: [ x11, desktop, home, opengl, pulseaudio, removable-media, network, joystick ]
   prboom-plus-game-server:
     command: desktop-launch prboom-plus-game-server-launch
     plugs: [ home, removable-media, network-bind ]
   prboom-plus-iwad:
     command: desktop-launch prboom-plus-iwad-launch
-    plugs: [ x11, home, opengl, pulseaudio, removable-media, network ]
+    plugs: [ x11, desktop, home, opengl, pulseaudio, removable-media, network, joystick ]
 
 slots:
   doom-engine:
