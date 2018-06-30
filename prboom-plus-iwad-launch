@@ -8,6 +8,11 @@ if [ -d "$SNAP/doom-engine" ]; then
     export SNAP="${SNAP}/doom-engine"
 fi
 
+# source desktop-launch to properly set up environment for zenity
+if [ -f "$SNAP/bin/desktop-launch" ]; then
+    source $SNAP/bin/desktop-launch
+fi
+
 # check if zenity and file are within PATH
 WAD_DIALOG=1
 which zenity
@@ -19,7 +24,7 @@ if [ "$?" != 0 ]; then
     WAD_DIALOG=0
 fi
 
-if [[ "$@" == "" ] && [ "$WAD_DIALOG" != 0 ]]; then
+if [ "x$@" == "x" ] && [ "$WAD_DIALOG" != 0 ]; then
     IWAD_FILENAME=""
     PWAD_FILENAME=""
 
