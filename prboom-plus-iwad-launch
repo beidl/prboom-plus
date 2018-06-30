@@ -8,11 +8,6 @@ if [ -d "$SNAP/doom-engine" ]; then
     export SNAP="${SNAP}/doom-engine"
 fi
 
-# source desktop-launch to properly set up environment for zenity
-if [ -f "$SNAP/bin/desktop-launch" ]; then
-    source $SNAP/bin/desktop-launch
-fi
-
 # check if zenity and file are within PATH
 WAD_DIALOG=1
 which zenity
@@ -32,7 +27,7 @@ if [ "x$@" == "x" ] && [ "$WAD_DIALOG" != 0 ]; then
       --file-selection \
       --title='Select the *.wad to play' \
       --file-filter='WAD file | *.wad *.WAD *.iwad *.IWAD *.pwad *.PWAD'`
-    if [ "$IWAD_FILENAME" == "" ]; then
+    if [ "x$IWAD_FILENAME" == "x" ]; then
         exit 1
     fi
     FILETYPE=`LANG=C file -m $SNAP/usr/share/file/magic.mgc $IWAD_FILENAME`
@@ -44,7 +39,7 @@ if [ "x$@" == "x" ] && [ "$WAD_DIALOG" != 0 ]; then
           --file-selection \
           --title='Select the corresponding IWAD *.wad to continue' \
           --file-filter='WAD file | *.wad *.WAD *.iwad *.IWAD'`
-        if [ "$IWAD_FILENAME" == "" ]; then
+        if [ "x$IWAD_FILENAME" == "x" ]; then
             exit 1
         fi
         
