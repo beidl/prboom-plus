@@ -19,7 +19,7 @@ if [ "$?" != 0 ]; then
     WAD_DIALOG=0
 fi
 
-if [ "x$@" == "x" ] && [ "$WAD_DIALOG" != 0 ]; then
+if [ "x$@" == "x" ] && [ $WAD_DIALOG != 0 ]; then
     IWAD_FILENAME=""
     PWAD_FILENAME=""
 
