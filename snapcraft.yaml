@@ -16,10 +16,10 @@ description: |
    
   plugs:
     doom-engine:
-    content: doom-engine
-    interface: content
-    target: $SNAP/doom-engine
-    default-provider: prboom-plus-beidl:doom-engine
+      content: doom-engine
+      interface: content
+      target: $SNAP/doom-engine
+      default-provider: prboom-plus-beidl:doom-engine
    
   Within the consuming snap the content would be exposed at "$SNAP/doom-engine", ie:
      /snap/the-consuming-snap/current/doom-engine
@@ -72,6 +72,7 @@ parts:
       - libpulse0
       - zenity
       - file
+      - libmagic-mgc
     prime:
       - bin/
       - lib/
