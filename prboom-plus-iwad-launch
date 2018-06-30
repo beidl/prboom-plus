@@ -8,7 +8,18 @@ if [ -d "$SNAP/doom-engine" ]; then
     export SNAP="${SNAP}/doom-engine"
 fi
 
-if [[ "$@" == "" ]]; then
+# check if zenity and file are within PATH
+WAD_DIALOG=1
+which zenity
+if [ "$?" != 0 ]; then
+    WAD_DIALOG=0
+fi
+which file
+if [ "$?" != 0 ]; then
+    WAD_DIALOG=0
+fi
+
+if [[ "$@" == "" ] && [ "$WAD_DIALOG" != 0 ]]; then
     IWAD_FILENAME=""
     PWAD_FILENAME=""
 
@@ -19,10 +30,10 @@ if [[ "$@" == "" ]]; then
     if [ "$IWAD_FILENAME" == "" ]; then
         exit 1
     fi
-    filetype=`LANG=C file -m $SNAP/usr/share/file/magic.mgc $IWAD_FILENAME`
+    FILETYPE=`LANG=C file -m $SNAP/usr/share/file/magic.mgc $IWAD_FILENAME`
 
     # select additional IWAD file via zenity
-    if [[ $filetype = *"PWAD data"* ]]; then
+    if [[ $FILETYPE = *"PWAD data"* ]]; then
         PWAD_FILENAME="$IWAD_FILENAME"
         IWAD_FILENAME=`zenity \
           --file-selection \
@@ -31,9 +42,11 @@ if [[ "$@" == "" ]]; then
         if [ "$IWAD_FILENAME" == "" ]; then
             exit 1
         fi
+        
+        exec "$SNAP/command-prboom-plus.wrapper" "-iwad" "$IWAD_FILENAME" "-file" "$PWAD_FILENAME"
+    else
+        exec "$SNAP/command-prboom-plus.wrapper" "-iwad" "$IWAD_FILENAME"
     fi
-
-    exec "$SNAP/command-prboom-plus.wrapper" "-iwad" "$IWAD_FILENAME" "-file" "$PWAD_FILENAME"
 else
     exec "$SNAP/command-prboom-plus.wrapper" "$@"
 fi
